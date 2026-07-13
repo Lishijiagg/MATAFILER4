@@ -16,6 +16,7 @@ vcf2fna	[MFLRDir]/bin/./vcf2fna
 #elevated MF3 scripts (main routines)
 geneCat_scr	perl [MFLRDir]/secScripts/geneCat.pl
 MAGpipe	perl [MFLRDir]/secScripts/MGS.pl
+dataDL_scr	perl [MFLRDir]/secScripts/DataDL/downloadPublic.pl
 
 
 #local scripts 	ESSENTIAL
@@ -71,6 +72,17 @@ taxid2tax_scr	python [MFLRDir]/secScripts/phylo/get_ranks.py
 #Python scripts
 FSTpy	/g/bork3/home/hildebra/dev/python/FST/scripts/fst_from_fasta.py
 fubarJson_scr	python [MFLRDir]/secScripts/phylo/fubarDNDS.py
+
+
+## public data retrieval (ENA/SRA) ##
+#Only stdlib python3 + wget are needed, so no conda env is required.
+#Called via their shebang (as hmmBestHit_scr / genRegions_scr are), which
+#avoids depending on a "python" alias that many systems no longer ship.
+#NOTE: these need a node with outbound HTTPS. Compute nodes often have none.
+fetchReads_scr	[MFLRDir]/secScripts/DataDL/fetchPublicReads.py
+map2sampleTab_scr	[MFLRDir]/secScripts/DataDL/map2sampleTable.py
+auditMapID_scr	[MFLRDir]/secScripts/DataDL/auditMapIdentity.py
+describeRuns_scr	[MFLRDir]/secScripts/DataDL/describeRuns.py
 
 
 #link to R exe
@@ -183,6 +195,8 @@ porechop	porechop
 bzip2	bzip2
 mergeRdScr	[MFLRDir]/helpers/merge-paired-reads.sh
 unmergeRdScr	[MFLRDir]/helpers/unmerge-paired-reads.sh
+#used by fetchReads_scr: resumable download of public reads from ENA
+wget	wget
 #tabix	tabix
 
 
