@@ -133,6 +133,9 @@ archive FASTQs are not copied into the permanent input directory.
 
 ### Maps for a whole study
 
+A step-by-step guide, from inspecting a study to cleanup, is in
+[`public_data_download.md`](public_data_download.md).
+
 Each map row is one sample. A study or project accession in one row downloads
 every run of the study into that single sample, 16S amplicon runs included.
 For a study, write one row per BioSample with

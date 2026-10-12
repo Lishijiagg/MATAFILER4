@@ -3929,7 +3929,7 @@ sub writeAccessionManifest {
 		}
 	}
 	return unless @rows;
-	my $manifest = "$baseOut/accession_manifest.tsv";
+	my $manifest = File::Spec->catfile($baseOut, 'accession_manifest.tsv');
 	atomic_write_text($manifest, join("\n", join("\t", @columns), @rows)."\n",
 		label => 'publish accession manifest');
 	print "Accession manifest: $manifest (".scalar(@rows)." file(s))\n"
